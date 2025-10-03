@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.unitracker.controller.other.TutorialController">
+   <left>
+      <TreeView fx:id="treeView" prefHeight="590.0" prefWidth="170.0" showRoot="false" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </TreeView>
+   </left>
+   <center>
+      <StackPane BorderPane.alignment="CENTER">
+         <children>
+            <VBox fx:id="INTRO">
+               <children>
+                  <Label alignment="TOP_LEFT" styleClass="title-label" text="PseudoSQL Tutorial">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="TOP_LEFT" text="PseudoSQL è un semplice linguaggio pensato per interagire con il database in modo rapido e leggibile.&#10;Non si tratta di un vero e proprio linguaggio SQL, ma di una sintassi specifica all'applicazione che permette di compiere operazioni comuni su gruppi e grafici senza dover scrivere query complesse.&#10;&#10;Con PseudoSQL è possibile:&#10;- Creare e gestire gruppi e grafici&#10;- Aggiungere o eliminare transazioni&#10;- Eseguire operazioni specifiche a tutti i grafici&#10;- Eseguire operazioni senza l'ausilio dell'interfaccia grafica&#10;&#10;Ogni riga di PseudoSQL è soggetta a un controllo sintattico e semantico, che permette di capire eventualmente cosa sia andato storto.&#10;In queste schede viene spiegata la sintassi dei comandi e cosa fanno.&#10;&#10;Tutti i comandi che richiedono più di un parametro richiedono che questi siano separati da una virgola (,)." wrapText="true" />
+               </children>
+            </VBox>
+            <VBox fx:id="SIGNATURE" visible="false">
+               <children>
+                  <Label alignment="TOP_LEFT" styleClass="title-label" text="Signature dei comandi">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="TOP_LEFT" text="&#9;&#9;G_CREATE codice, supergruppo, nome&#10;&#9;&#9;G_DROP codice&#10;&#9;&#9;G_MOVE codice, supergruppo&#10;&#9;&#9;G_RENAME codice, nome&#10;&#10;&#9;&#9;C_CREATE codice, gruppo, nome, unita_di_misura&#10;&#9;&#9;C_DROP codice&#10;&#9;&#9;C_MOVE codice, gruppo&#10;&#9;&#9;C_RENAME codice, nome&#10;&#10;&#9;&#9;ADD codice_grafico, quantita [, data, descrizione, APPLY]&#10;&#9;&#9;DELETE id_transazione [, APPLY]&#10;&#9;&#9;&#9;&#9;&#10;&#9;&#9;COMPLETE_DROP&#10;&#9;&#9;APPLY_ALL&#10;&#9;&#9;CANCEL_ALL&#10;&#10;&#9;&#9;APPLY codice_grafico&#10;&#9;&#9;CANCEL codice_grafico&#9;&#10;&#10;&#9;&#9;A_APPLY id_transazione&#10;&#9;&#9;A_CANCEL id_transazione&#10;&#10;&#9;&#9;D_APPLY id_transazione&#10;&#9;&#9;D_CANCEL id_transazione" wrapText="true" />
+               </children>
+            </VBox>
+
+                   <!-- Gruppi -->
+             <VBox fx:id="G_CREATE" spacing="5" visible="false">
+                 <Label maxWidth="-Infinity" styleClass="title-label" text="G_CREATE codice, supergruppo, nome" />
+                 <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Crea un nuovo gruppo con il codice specificato, assegnandolo a un supergruppo e dandogli un nome.&#10;Se non si vuole assegnarlo a nessun supergruppo bisogna inserirlo nel supergruppo ROOT.&#10;&#10;VINCOLI: &#10;1) Non possono esistere due gruppi con lo stesso codice.&#10;2) Non possono esistere due gruppi con lo stesso nome all'interno dello stesso supergruppo.&#10;3) Il nome e il codice del gruppo non possono contenere virgole (,)&#10;&#10;ATTENZIONE&#10;Il codice inserito non potrà mai essere cambiato.&#10;&#10;ESEMPIO:&#10;G_CREATE abc123, ROOT, SpeseMediche" wrapText="true" />
+             </VBox>
+
+                   <VBox fx:id="G_DROP" spacing="5" visible="false">
+                 <Label maxWidth="1.7976931348623157E308" styleClass="title-label" text="G_DROP codice" VBox.vgrow="ALWAYS" />
+                 <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Elimina definitivamente il gruppo identificato da 'codice', insieme a tutti i grafici al suo interno.&#10;&#10;VINCOLI:&#10;1) Il gruppo selezionato deve esistere.&#10;2) Non si può eliminare il gruppo ROOT.&#10;&#10;ATTENIZONE:&#10;PseudoSQL non chiede conferma per eseguire questa operazione, e l'eliminazione è irreversibile.&#10;Per non perdere i dati, è consigliato creare un backup del gruppo.&#10;&#10;ESEMPIO:&#10;G_DROP abc123" wrapText="true" />
+             </VBox>
+
+                   <VBox fx:id="G_MOVE" spacing="5" visible="false">
+                 <Label styleClass="title-label" text="G_MOVE codice, supergruppo" />
+                 <Label text="Sposta il gruppo indicato all’interno di un altro supergruppo.&#10;&#10;VINCOLI: &#10;1) Il gruppo 'codice' e il gruppo 'supergruppo' devono esistere.&#10;2) All'interno di supergruppo non deve esistere un altro gruppo con lo stesso nome del gruppo 'codice'.&#10;&#10;In presenza di ridondanza di nomi, usare prima G_RENAME su almeno uno dei gruppi coinvolti.&#10;&#10;ESEMPIO:&#10;G_MOVE abc123, Bollette" wrapText="true" />
+             </VBox>
+
+                   <VBox fx:id="G_RENAME" spacing="5" visible="false">
+                 <Label maxWidth="1.7976931348623157E308" styleClass="title-label" text="G_RENAME codice, nome" VBox.vgrow="ALWAYS" />
+                 <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Rinomina un gruppo esistente cambiandone il nome.&#10;&#10;VINCOLI:&#10;1) Il gruppo 'codice' deve esistere.&#10;2) Non deve esistere un altro gruppo con nome 'nome' all'interno del supergruppo.&#10;3) Il nome del gruppo non può contenere virgole (,)&#10;&#10;ESEMPIO:&#10;G_RENAME abc123, SpeseVarie" wrapText="true" />
+             </VBox>
+
+                   <!-- Grafici -->
+             <VBox fx:id="C_CREATE" spacing="5" visible="false">
+                 <Label styleClass="title-label" text="C_CREATE codice, gruppo, nome, unita_di_misura" />
+                 <Label text="Crea un nuovo grafico con codice, assegnato a un gruppo, con un nome e una unità di misura.&#10;&#10;VINCOLI:&#10;1) Non deve esistere un altro grafico con codice 'codice'&#10;2) Il gruppo 'gruppo' deve esistere&#10;3) Non deve esistere un altro grafico con nome 'nome' all'interno di 'gruppo'&#10;3) Il nome e il codice del grafico non possono contenere virgole (,)&#10;&#10;&#10;ATTENZIONE:&#10;Il codice e l'unità di misura inseriti non potranno essere modificati.&#10;&#10;ESEMPIO:&#10;C_CREATE elec, ROOT, Elettricità, WATT" wrapText="true" />
+             </VBox>
+
+                   <VBox fx:id="C_DROP" spacing="5" visible="false">
+                 <Label styleClass="title-label" text="C_DROP codice" />
+                 <Label text="Elimina definitivamente il grafico identificato da 'codice', e tutti i dati al suo interno.&#10;&#10;VINCOLI:&#10;1) Il grafico selezionato deve esistere.&#10;&#10;ATTENIZONE:&#10;PseudoSQL non chiede conferma per eseguire questa operazione, e l'eliminazione è irreversibile.&#10;Per non perdere i dati, è consigliato creare un backup del grafico.&#10;&#10;ESEMPIO:&#10;C_DROP elec" wrapText="true" />
+             </VBox>
+
+                   <VBox fx:id="C_MOVE" spacing="5" visible="false">
+                 <Label styleClass="title-label" text="C_MOVE codice, gruppo" />
+                 <Label text="Sposta il grafico indicato all’interno di un altro supergruppo.&#10;&#10;VINCOLI: &#10;1) Il grafico 'codice' e il gruppo 'gruppo' devono esistere.&#10;2) All'interno di 'gruppo' non deve esistere un altro grafico con lo stesso nome.&#10;&#10;In presenza di ridondanza di nomi, usare prima C_RENAME su almeno uno dei grafici coinvolti.&#10;&#10;ESEMPIO:&#10;C_MOVE elec, Bollette" wrapText="true" />
+             </VBox>
+
+                   <VBox fx:id="C_RENAME" spacing="5" visible="false">
+                 <Label styleClass="title-label" text="C_RENAME codice, nome" />
+                 <Label text="Rinomina un grafico esistente cambiandone il nome.&#10;&#10;VINCOLI:&#10;1) Il grafico 'codice' deve esistere.&#10;2) Non deve esistere un altro grafico con nome 'nome' all'interno dello stesso supergruppo.&#10;3) Il nome del grafico non può contenere virgole (,)&#10;&#10;&#10;ESEMPIO:&#10;C_RENAME elec, ElecCasaMare" wrapText="true" />
+             </VBox>
+
+                   <!-- Transazioni -->
+             <VBox fx:id="ADD" spacing="5" visible="false">
+                 <Label styleClass="title-label" text="ADD codice_grafico, quantita [, data, descrizione, APPLY]" />
+                 <Label text="Aggiunge una transazione a un grafico.&#10;&#10;- Il valore 'data' va inserito nel formato YYYY-MM-DD (trattini inclusi), ed è opzionale: se omesso, la transazione verrà salvata con la data odierna.&#10;&#10;- Il valore 'descrizione' è opzionale, se omesso viene semplicemente lasciato vuoto.&#10;&#10;- APPLY va aggiunto rigorosamente alla fine, solo se si vuole applicare immediatamente la transazione. Se viene omesso, la transazione viene salvata nelle transazioni temporanee, e si può confermare o cancellare con i comandi A_APPLY e A_CANCEL.&#10;&#10;VINCOLI:&#10;1) Il grafico 'codice_grafico' deve esistere&#10;2) La quantità va inserita in formato numerico positivo, con al più due cifre decimali precedute da un punto.&#10;3) La descrizione non può contenere virgole (,)&#10;&#10;ESEMPI:&#10;ADD elec, 5.0, APPLY&#10;ADD elec, 123, 2025-08-22&#10;ADD elec, 200.20, Pagamento bollette, APPLY&#10;ADD elec, 21, 1999-04-22. Spese storiche, APPLY" wrapText="true" />
+             </VBox>
+
+                   <VBox fx:id="DELETE" spacing="5" visible="false">
+                 <Label styleClass="title-label" text="DELETE id_transazione [, APPLY]" />
+                 <Label text="Cancella una transazione esistente.&#10;&#10;APPLY è opzionale, se inserito la transazione viene eliminata permanentemente, altrimenti viene messa tra le transazioni cancellate provvisoriamente, e per eliminarla definitiviamente o annullare l'eliminazione si usano rispettivamente i comandi D_APPLY e D_CANCEL.&#10;&#10;VINCOLI:&#10;1) La transazione 'id_transazione' deve esistere&#10;2) Non si può cancellare provvisoriamente la stessa transazione più di una volta&#10;&#10;ATTENZIONE:&#10;L'eliminazione con DELETE APPLY o con la concatenazione DELETE + D_APPLY è irreversibile&#10;&#10;ESEMPIO:&#10;DELETE 12, APPLY" wrapText="true" />
+             </VBox>
+
+                   <!-- Gestione database -->
+             <VBox fx:id="COMPLETE_DROP" spacing="5" visible="false">
+                 <Label styleClass="title-label" text="COMPLETE_DROP" />
+                 <Label text="Elimina completamente tutti i gruppi, grafici e transazioni, resettando completamente il database.&#10;&#10;ATTENZIONE:&#10;Questa è un'operazione rischiossima e permanente, se non si vuole perdere i dati fare prima il backup premendo Backup &gt; Esporta tutto." wrapText="true" />
+             </VBox>
+
+                   <!-- Applicazioni transazioni -->
+             <VBox fx:id="APPLY_ALL" spacing="5" visible="false">
+                 <Label styleClass="title-label" text="APPLY_ALL" />
+                 <Label text="Applica tutte le operazioni provvisorie di tutti i grafici presenti nel database.&#10;&#10;Queste comprendono sia le transazioni provvisorie che le cancellazioni provvisorie.&#10;&#10;ATTENZIONE:&#10;PseudoSQL non chiede conferma per eseguire questa operazione, e i cambiamenti sono difficilmente reversibili. Se non si vuole perdere lo stato attuale, creare un backup premendo Backup &gt; Esporta tutto, oppure utilizzare l'operazione più specifica APPLY." wrapText="true" />
+             </VBox>
+
+                   <VBox fx:id="CANCEL_ALL" spacing="5" visible="false">
+                 <Label styleClass="title-label" text="CANCEL_ALL" />
+                 <Label text="Annulla tutte le operazioni provvisorie di tutti i grafici presenti nel database.&#10;&#10;Queste comprendono sia le transazioni provvisorie che le cancellazioni provvisorie.&#10;&#10;ATTENZIONE:&#10;PseudoSQL non chiede conferma per eseguire questa operazione, e i cambiamenti sono difficilmente reversibili. Se non si vuole perdere lo stato attuale, creare un backup premendo Backup &gt; Esporta tutto, oppure utilizzare l'operazione più specifica CANCEL." wrapText="true" />
+             </VBox>
+
+                   <VBox fx:id="APPLY" spacing="5" visible="false">
+                 <Label styleClass="title-label" text="APPLY codice_grafico" />
+                 <Label text="Applica tutte le operazioni provvisorie legate al grafico indicato.&#10;Queste coinvolgono sia transazioni provvisorie che cancellazioni provvisorie.&#10;&#10;VINCOLI:&#10;1) Il grafico 'codice_grafico' deve esistere.&#10;&#10;ATTENZIONE:&#10;PseudoSQL non chiede conferma per eseguire questa operazione, per non perdere lo stato attuale è consigliato effettuare un backup del grafico.&#10;&#10;ESEMPIO:&#10;APPLY elec" wrapText="true" />
+             </VBox>
+
+                   <VBox fx:id="CANCEL" spacing="5" visible="false">
+                 <Label styleClass="title-label" text="CANCEL codice_grafico" />
+                 <Label text="Cancella tutte le operazioni provvisorie legate al grafico indicato.&#10;Queste coinvolgono sia transazioni provvisorie che cancellazioni provvisorie.&#10;&#10;VINCOLI:&#10;1) Il grafico 'codice_grafico' deve esistere.&#10;&#10;ATTENZIONE:&#10;PseudoSQL non chiede conferma per eseguire questa operazione, per non perdere lo stato attuale è consigliato creare un backup del grafico.&#10;&#10;ESEMPIO:&#10;CANCEL elec" wrapText="true" />
+             </VBox>
+
+                   <!-- Singole transazioni -->
+             <VBox fx:id="A_APPLY" spacing="5" visible="false">
+                 <Label styleClass="title-label" text="A_APPLY id_transazione" />
+                 <Label text="Applica una singola transazione provvisoria, rendendola permanente.&#10;&#10;VINCOLI:&#10;1) La transazione provvisoria 'id_transazione' deve esistere.&#10;&#10;ESEMPIO:&#10;A_APPLY 123" wrapText="true" />
+               <StackPane.margin>
+                  <Insets />
+               </StackPane.margin>
+             </VBox>
+
+                   <VBox fx:id="A_CANCEL" spacing="5" visible="false">
+                 <Label styleClass="title-label" text="A_CANCEL id_transazione" />
+                 <Label text="Cancella una singola transazione provvisoria, eliminandola dai dati provvisori.&#10;&#10;VINCOLI:&#10;1) La transazione provvisoria 'id_transazione' deve esistere.&#10;&#10;ESEMPIO:&#10;A_CANCEL 123" wrapText="true" />
+             </VBox>
+
+                   <VBox fx:id="D_APPLY" spacing="5" visible="false">
+                 <Label styleClass="title-label" text="D_APPLY id_transazione" />
+                 <Label text="Elimina definitivamente una transazione cancellata provvisoriamente.&#10;&#10;VINCOLI:&#10;1) La transazione 'id_transazione' deve esistere.&#10;2) La transazione 'id_transazione' deve essere stata cancellata provvisoriamente prima di eseguire questo comando.&#10;&#10;Se si vuole eliminare direttamente una transazione non ancora cancellata, usare DELETE con APPLY.&#10;&#10;ESEMPIO:&#10;D_APPLY 122&#10;&#10;" wrapText="true" />
+             </VBox>
+
+                   <VBox fx:id="D_CANCEL" spacing="5" visible="false">
+                 <Label styleClass="title-label" text="D_CANCEL id_transazione" VBox.vgrow="ALWAYS" />
+                 <Label text="Cancella l'eliminazione provvisoria di una transazione.&#10;&#10;VINCOLI:&#10;1) La transazione 'id_transazione' deve esistere.&#10;2) La transazione 'id_transazione' deve essere stata cancellata provvisoriamente prima dell'esecuzione di questo comando.&#10;&#10;ESEMPIO:&#10;D_CANCEL 122" wrapText="true" VBox.vgrow="ALWAYS" />
+             </VBox>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </StackPane>
+   </center>
+</BorderPane>

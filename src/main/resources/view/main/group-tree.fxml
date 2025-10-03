@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane minWidth="5.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.unitracker.controller.main.GroupViewController">
+   <top>
+      <ButtonBar buttonMinWidth="0.0" minWidth="5.0" BorderPane.alignment="CENTER">
+        <buttons>
+          <Button mnemonicParsing="false" onAction="#createGroup" styleClass="icon-button">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" nodeOrientation="INHERIT" preserveRatio="true">
+                     <image>
+                        <Image url="@../../icons/add-group.png" />
+                     </image></ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Nuovo gruppo" />
+               </tooltip>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#createChart" styleClass="icon-button">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" nodeOrientation="INHERIT" preserveRatio="true">
+                     <image>
+                        <Image url="@../../icons/plus-small.png" />
+                     </image></ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Nuovo grafico" />
+               </tooltip>
+            </Button>
+        </buttons>
+      </ButtonBar>
+   </top>
+   <center>
+      <TreeView fx:id="groupView" minWidth="5.0" showRoot="false" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>
