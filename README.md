@@ -11,7 +11,6 @@ Introduce **PseudoSQL**, un linguaggio interpretato creato appositamente per ins
 - `Launcher.java` - entry point dell'applicazione
 - `src/` - codice sorgente
 - `resources/` - immagini, CSS, FXML
-- `dati_prova.psql` - dati di prova per testare il progetto
 
 ---
 
@@ -44,7 +43,7 @@ Introduce **PseudoSQL**, un linguaggio interpretato creato appositamente per ins
 
 3. Eseguire il main Launcher.java
 
-Un tempo esistevano anche dei **dati_prova.psql** per provare il progetto, ma il mio cane lo ha mangiato e quindi non posso includerli.
+Un tempo esistevano anche dei **dati_prova.psql** per provare il progetto, ma il mio cane li ha mangiati e quindi non posso includerli.
 (Nota: non ho un cane)
 
 ---
@@ -66,6 +65,7 @@ Per un tutorial completo: **Aiuto > PseudoSQL** nell'applicazione.
 
 Come testimoniato in **Aiuto > Crediti**, il progetto è stato sviluppato da Malachy Parisi.
 L'unica eccezione è rappresentata da eventuali errori nel codice, quelli li ha messi un hacker intento a sabotarmi.
+
 Le icone utilizzate provengono da set a **licenza gratuita** per uso non commerciale e non ho intenzione di assumere il merito della loro creazione.
 
 ---
