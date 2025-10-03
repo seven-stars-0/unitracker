@@ -54,7 +54,7 @@ Per un tutorial completo: **Aiuto > PseudoSQL** nell'applicazione.
 Come testimoniato in **Aiuto > Crediti**, il progetto è stato sviluppato da Malachy Parisi.
 L'unica eccezione è rappresentata da eventuali errori nel codice, quelli li ha messi un hacker intento a sabotarmi.
 
-Le icone utilizzate provengono da set a **licenza gratuita** per uso non commerciale e non ho intenzione di assumere il merito della loro creazione.
+Le icone utilizzate provengono da set a **licenza gratuita** per uso non commerciale.
 
 ## Possibili estensioni
 
