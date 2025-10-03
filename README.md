@@ -38,7 +38,7 @@ Introduce **PseudoSQL**, un linguaggio interpretato creato appositamente per ins
 
 1. Clonare il repository:
    ```bash
-   git clone https://github.com/tuo-username/UniTracker.git
+   git clone https://github.com/seven-stars-0/unitracker.git
    ```
 2. Aprire il progetto con IntelliJ IDEA o un IDE compatibile
 
